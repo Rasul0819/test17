@@ -18,7 +18,7 @@ class ToAdminState(StatesGroup):
 
 @dp.message(Command('start'))
 async def send_hi(sms:types.Message):
-    await sms.answer(text='Salem')
+    await sms.answer(text='Salem doslar')
 
 @dp.message(F.text=='Feedback')
 async def send_to_admin(sms:types.Message,state:FSMContext):
@@ -30,6 +30,7 @@ async def save_text(sms:types.Message,state:FSMContext):
     await state.update_data(text=sms.text)
     await sms.answer(text='Sizde suwret barma?')
     await state.set_state(ToAdminState.yes_no)
+
    
 
 @dp.message(ToAdminState.yes_no)
